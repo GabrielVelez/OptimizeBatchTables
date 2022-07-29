@@ -1,0 +1,17 @@
+2022-05-27 10:41:00 (Error al leer la DB) Error: Error: Knex: run
+$ npm install mssql --save
+Cannot find module 'tedious'
+Require stack:
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\knex\lib\dialects\mssql\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\knex\lib\config-resolver.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\knex\lib\knex.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\knex\lib\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\knex\knex.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\@adonisjs\lucid\src\Database\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\@adonisjs\lucid\src\Database\Manager.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\@adonisjs\lucid\providers\LucidProvider.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\require-stack\src\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\require-stack\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\@adonisjs\fold\src\Ioc\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\node_modules\@adonisjs\fold\index.js
+- C:\Users\Gabriel\Desktop\OptimizeBatchTables\OptimizeBatchTables\server.js

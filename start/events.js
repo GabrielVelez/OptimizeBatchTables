@@ -1,5 +1,5 @@
 'use strict'
-'use strict'
+const Model = require('@adonisjs/lucid/src/Lucid/Model');
 const moment = require('moment');
 const Log = use('App/PxControl/LogManager.js')
 const l = new Log
@@ -13,9 +13,6 @@ const FaseOpt = use('App/Models/TermTransOpt')
 const ParameterOpt = use('App/Models/OnlineParameterValueOpt')
 const vBatch = use('App/Models/VBatch')
 
-
-
-
 async function ciclo() {
   setTimeout(async () => {
     try {
@@ -26,8 +23,8 @@ async function ciclo() {
         console.log(moment().format('YYYY-MM-DD HH:mm:ss'), ` (Adquiriendo batchs nuevos) Error: ${error}`)
       }
       try {
-        const lstBatch = await getBatchRunningData()
-        await controlFinishBatchsComplete(lstBatch)
+        const lstBatch = await getBatchRunningData() //Obtenemos los batch a sincronizar
+        await controlFinishBatchsComplete(lstBatch) 
       }
       catch (error) {
         console.log(moment().format('YYYY-MM-DD HH:mm:ss'), ` (Finalizando batchs) Error: ${error}`)
@@ -41,26 +38,25 @@ async function ciclo() {
       ciclo()
     }
 
-  }, 50000);
+  }, 5000);
 }
+
+
 async function copyBatchsSync() {
+
   try {
     let lastSync = []
     let batchs = []
     let batchsFiltrados = []
-
+    // .table('DeclarateSE.sync')
     lastSync = await Database
-      // .table('DeclarateSE.sync')
       .table('sync')
-
 
     let desde = moment(lastSync[0].LastSync)
     desde = desde.subtract(20, 'minutes').utc()
-
     batchs = await Database
       .connection('historian')
       .raw(`SELECT OGUID, CreationDateTime FROM [vBatch] WHERE CreationDateTime >= '${desde.format('YYYY-MM-DD HH:mm:ss')}' ORDER BY CreationDateTime DESC`)
-    //.raw(`SELECT OGUID, CreationDateTime FROM [HistorianStorage].[SIMATIC_BATCH_SB6_2118-112-6737-38_V9_00_00].[vBatch] WHERE CreationDateTime BETWEEN '${desde.format('YYYY-MM-DD HH:mm:ss')}' AND '${serverMoment.format('YYYY-MM-DD HH:mm:ss')}' ORDER BY CreationDateTime DESC`)
 
     if (batchs.length > 0) {
       let lastSyncDate = batchs[0].CreationDateTime;
@@ -131,13 +127,10 @@ async function copyBatchsSync() {
 async function getBatchRunningData() {
 
   let oguidList = []
-
   oguidList = await Database
     .raw('SELECT OGUID FROM batchRunning')
 
-
   if (oguidList.length > 0) {
-
     let arrayPromesas = oguidList.map(it => {
       return it.OGUID
     })
@@ -146,52 +139,54 @@ async function getBatchRunningData() {
 
     let lstBatch = []
     try {
-
       lstBatch = await Database
         .connection('historian')//Agregar los demas campos
         .raw(`SELECT ROOTGUID,ROOTOBJID,ROOTOTID,OGUID,OBJID,OTID,Name,Quantity,
-        //   FormulaCategoryName,FormulaName,MRecipeName,ProductCode,ActStart,ActEnd,State [vBatch] WHERE OGUID in ('${arrayOGUIDS.join('\',\'')}')`)
+        FormulaCategoryName,FormulaName,MRecipeName,ProductCode,ActStart,ActEnd,State FROM [vBatch] WHERE OGUID in ('${arrayOGUIDS.join('\',\'')}')`)
       // .raw(`SELECT OGUID, State, CreationDateTime FROM [HistorianStorage].[SIMATIC_BATCH_SB6_2118-112-6737-38_V9_00_00].[vBatch] WHERE OGUID in ('${arrayOGUIDS.join('\',\'')}')`)
-
     }
     catch (error) {
       l.logDB(`${moment().format('YYYY-MM-DD HH:mm:ss')} (Error al buscar los batchs en ejecucion) Error: ${error}`)
+      console.log(`${moment().format('YYYY-MM-DD HH:mm:ss')} (Error al buscar los batchs en ejecucion) Error: ${error}`)
     }
 
     return lstBatch
   }
 
-
   return []
 
 }
 async function controlFinishBatchsComplete(lst) {
+  try {
+    console.log("control finish start")
+    //Filtramos para conservar los finalizados.
+    let lstFinalizados = await lst.filter(it => (it.State == 11 || it.State == 12 || it.State == 13))
+    await insertBatchData(lstFinalizados)
 
-  let lstFinalizados = await lst.filter(it => (it.State == 11 || it.State == 12 || it.State == 13))
-  await insertBatchData(lstFinalizados)
-  //borrar batchs
+    //borrar batchs
+    lstFinalizados.forEach(it => {
+      try {
 
-  lstFinalizados.forEach(it => {
-    try {
+        insertOpvData(it.OGUID)
+        insertFaseData(it.OGUID)
 
-
-      insertOpvData(it.OGUID)
-      insertFaseData(it.OGUID)
-
-      lstFinalizados.subtract(it)
-      it.delete()
-      // BatchRunning.delete(it)
-
-
-    }
-    catch (error) {
-      // console.log(error)
-      //insert de oguids que fallaron en tabla nueva
-
-      BatchRejected.createMany(lstFinalizados)
-
-    }
-  })
+        console.log("4")
+      }
+      catch (error) {
+        //insert de oguids que fallaron en tabla nueva
+        const rejectedOGUIDs = lstFinalizados.map(rejected => {
+          return {OGUID:rejected.OGUID}
+        })
+        //console.log('RECHAZADOS:',rejectedOGUIDs)
+         BatchRejected.createMany(rejectedOGUIDs)
+        .catch((error)=>{
+          return console.log('REJECTED_INSERT_ERROR:', error)
+        })
+      }
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
 async function insertBatchData(lst) {
   try {
@@ -200,7 +195,7 @@ async function insertBatchData(lst) {
     for (let registros = 0; registros < lst.length; registros++) {
       let i = registros
 
-      let limite = i + 3 < vBatchData.length ? 3 : vBatchData.length - i
+      let limite = i + 3 < lst.length ? 3 : lst.length - i
 
       let values = ''
 
@@ -208,16 +203,15 @@ async function insertBatchData(lst) {
 
         if (values.length > 0) values += ', '
 
-        values += `('${vBatchData[i].ROOTGUID}', ${vBatchData[i].ROOTOBJID}, ${vBatchData[i].ROOTOTID}, '${vBatchData[i].OGUID}', ${vBatchData[i].OBJID}, `
-        values += `${vBatchData[i].OTID}, '${vBatchData[i].Name}', ${vBatchData[i].Quantity}, '${vBatchData[i].FormulaCategoryName}', '${vBatchData[i].FormulaName}', `
-        values += `'${vBatchData[i].MRecipeName}', '${vBatchData[i].ProductCode}', '${moment(vBatchData[i].ActStart).format()}', '${moment(vBatchData[i].ActEnd).format()}', ${vBatchData[i].State})`
+        values += `('${lst[i].ROOTGUID}', ${lst[i].ROOTOBJID}, ${lst[i].ROOTOTID}, '${lst[i].OGUID}', ${lst[i].OBJID}, `
+        values += `${lst[i].OTID}, '${lst[i].Name}', ${lst[i].Quantity}, '${lst[i].FormulaCategoryName}', '${lst[i].FormulaName}', `
+        values += `'${lst[i].MRecipeName}', '${lst[i].ProductCode}', '${moment(lst[i].ActStart).format()}', '${moment(lst[i].ActEnd).format()}', ${lst[i].State})`
 
       }
-      //Inserte aqui el insert(?
+      //Insert aqui
       const firstUserId = await Database
         .raw(`INSERT INTO batchOpt(ROOTGUID,ROOTOBJID,ROOTOTID,OGUID,OBJID,OTID,Name, Quantity,FormulaCategoryName,FormulaName,MRecipeName,ProductCode,ActStart,ActEnd,State)
-        VALUES${values}`)
-      // console.log(values)
+              VALUES${values}`)
       registros = i - 1
     }
 
@@ -296,13 +290,13 @@ async function insertFaseData(OGUID) {
 async function insertOpvData(OGUID) {
   try {
     let vOpvData = await getDataOPV(OGUID)
-    console.log(vOpvData.length)
+
     for (let registros = 0; registros < vOpvData.length; registros++) {
       let i = registros
 
       let limite = i + 1000 < vOpvData.length ? 1000 : vOpvData.length - i
       let values = ''
-      console.log(limite)
+      
       for (i; i < registros + limite; i++) {
 
         if (values.length > 0) values += ', '
@@ -310,16 +304,12 @@ async function insertOpvData(OGUID) {
         values += `('${vOpvData[i].ROOTGUID}', ${vOpvData[i].P2OBJID}, ${vOpvData[i].P2OTID}, ${vOpvData[i].POBJID}, `
         values += `${vOpvData[i].POTID}, ${vOpvData[i].ActivationCounter},${vOpvData[i].OBJID},`
 
-
-
-
-
         let name = vOpvData[i].Name
         name = name == null ? null : `'${vOpvData[i].Name}'`
         values += `${name},`
         values += `${vOpvData[i].sp_float}, `
 
-        values += `${vOpvData[i].av_float}, ${vOpvData[i].sp_int},${vOpvData[i].av_int},`
+        values += `${vOpvData[i].av_float}, ${vOpvData[i].sp_int}, ${vOpvData[i].av_int},`
 
         let spStr = vOpvData[i].sp_string
         spStr = spStr == null ? null : `'${vOpvData[i].sp_string}'`
@@ -371,7 +361,6 @@ async function insertOpvData(OGUID) {
           ,[sp_EnumValue]
           ,[av_EnumValue])
         VALUES${values}`)
-      // console.log(values)
 
       registros = i - 1
     }
@@ -382,8 +371,8 @@ async function insertOpvData(OGUID) {
     throw error
   }
 
-
 }
+
 async function getDataFase(OGUID) {
   try {
 

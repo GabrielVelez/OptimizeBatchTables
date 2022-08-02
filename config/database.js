@@ -87,7 +87,12 @@ module.exports = {
       port:parseInt( Env.get("DB_PORT", "")),
       user: Env.get("DB_USER", ""),
       password: Env.get("DB_PASSWORD", ""),
-      database: Env.get("DB_DATABASE", "adonis"),     
+      database: Env.get("DB_DATABASE", "adonis"),    
+      options:{ 
+        encrypt: false, // Elimina algunos mensajes de warning en la consola
+        enableArithAbort: true, // Elimina algunos mensajes de warning en la consola
+        trustServerCertificate: true, // Elimina algunos mensajes de warning en la consola
+      }  
     }
   },
   historian: {
@@ -100,7 +105,31 @@ module.exports = {
       port: 1433,
       user: Env.get('DB_USER', ''),
       password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE_PH', '')
+      database: Env.get('DB_DATABASE_PH', ''),
+      options:{ 
+        encrypt: false, // Elimina algunos mensajes de warning en la consola
+        enableArithAbort: true, // Elimina algunos mensajes de warning en la consola
+        trustServerCertificate: true, // Elimina algunos mensajes de warning en la consola
+      } 
+    }
+  },
+  
+  sapServices: {
+    client: 'mssql',
+    connection: {
+      options: {
+        enableArithAbort: true,
+      },
+      host: Env.get('DB_HOST', 'localhost'),
+      port: 1433,
+      user: Env.get('DB_USER', 'sysa'),
+      password: Env.get('DB_PASSWORD', 'edsd5450'),
+      database: Env.get('DB_DATABASE', 'PxSapServices'),
+      options:{ 
+        encrypt: false, // Elimina algunos mensajes de warning en la consola
+        enableArithAbort: true, // Elimina algunos mensajes de warning en la consola
+        trustServerCertificate: true, // Elimina algunos mensajes de warning en la consola
+      } 
     }
   }
 }

@@ -41,7 +41,7 @@ async function ciclo() {
       ciclo()
     }
 
-  }, 10000);
+  }, 50000);
 }
 async function copyBatchsSync() {
   try {
@@ -97,7 +97,7 @@ async function copyBatchsSync() {
       if (batchsFiltrados.length > 0) {
         const respuesta = await BatchRunning.createMany(arrayCreate)
         console.log('Batchs insertados: ', batchsFiltrados.length)
-        console.log(respuesta)/// controlar si tira bien los datos
+        //console.log(respuesta)/// controlar si tira bien los datos
 
         try {
           await Database

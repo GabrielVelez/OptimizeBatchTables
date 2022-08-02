@@ -2082,3 +2082,140 @@ Require stack:
 2022-06-30 14:52:03 (Error al cargar los batchs) Error: Error: connect ETIMEDOUT 192.168.1.182:5432
 2022-06-30 14:52:55 (Error al cargar los batchs) Error: Error: connect ETIMEDOUT 192.168.1.182:5432
 2022-06-30 14:53:47 (Error al cargar los batchs) Error: Error: connect ETIMEDOUT 192.168.1.182:5432
+2022-07-29 21:19:47 (Error al cargar los batchs) Error: Error: Knex: run
+$ npm install sqlite3 --save
+Cannot find module 'sqlite3'
+Require stack:
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\dialects\sqlite3\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\config-resolver.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\Manager.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\providers\LucidProvider.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\src\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\src\Ioc\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\server.js
+2022-07-29 21:19:57 (Error al cargar los batchs) Error: Error: Knex: run
+$ npm install sqlite3 --save
+Cannot find module 'sqlite3'
+Require stack:
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\dialects\sqlite3\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\config-resolver.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\Manager.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\providers\LucidProvider.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\src\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\src\Ioc\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\server.js
+2022-07-29 21:20:08 (Error al cargar los batchs) Error: Error: Knex: run
+$ npm install sqlite3 --save
+Cannot find module 'sqlite3'
+Require stack:
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\dialects\sqlite3\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\config-resolver.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\lib\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\knex\knex.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\src\Database\Manager.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\lucid\providers\LucidProvider.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\src\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\require-stack\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\src\Ioc\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\node_modules\@adonisjs\fold\index.js
+- C:\Users\yonar\Desktop\Proyectos Sysa\optimize_batch_tables_scj\server.js
+2022-07-29 21:22:01 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:22:11 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:22:21 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:22:31 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:22:41 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:22:51 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:01 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:11 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:21 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:31 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:41 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:23:51 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {sqlite}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:24:12 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:24:22 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:24:32 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:24:42 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:24:52 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:02 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:12 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:22 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:32 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:42 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:25:52 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:26:14 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:27:13 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:28:03 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:28:53 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:29:43 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mssql}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-07-29 21:30:57 (Error al cargar los batchs) Error: ConnectionError: Failed to connect to 127.0.0.1:3306 - connect ECONNREFUSED 127.0.0.1:3306
+2022-07-29 21:32:35 (Error al cargar los batchs) Error: ConnectionError: Failed to connect to 127.0.0.1:3306 - connect ECONNREFUSED 127.0.0.1:3306
+2022-07-29 21:33:25 (Error al cargar los batchs) Error: ConnectionError: Failed to connect to 127.0.0.1:3306 - connect ECONNREFUSED 127.0.0.1:3306
+2022-07-29 21:34:19 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:35:09 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:35:59 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:36:49 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:37:39 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:38:29 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:39:19 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:40:09 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:40:59 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:41:49 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:42:39 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:43:29 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:44:19 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 21:45:09 (Error al cargar los batchs) Error: ConnectionError: Login failed for user 'root'.
+2022-07-29 22:42:43 (Batchs cargados con exito)
+2022-07-29 22:44:12 (Batchs cargados con exito)
+2022-07-29 22:45:02 (Batchs cargados con exito)
+2022-07-29 22:45:52 (Batchs cargados con exito)
+2022-07-29 22:46:42 (Batchs cargados con exito)
+2022-07-29 22:47:32 (Batchs cargados con exito)
+2022-07-29 22:48:22 (Batchs cargados con exito)
+2022-07-29 22:49:12 (Batchs cargados con exito)
+2022-07-29 22:50:02 (Batchs cargados con exito)
+2022-07-29 22:50:53 (Batchs cargados con exito)
+2022-07-29 22:51:43 (Batchs cargados con exito)
+2022-07-29 22:52:33 (Batchs cargados con exito)
+2022-08-01 14:11:46 (Batchs cargados con exito)

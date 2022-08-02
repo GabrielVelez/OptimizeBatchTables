@@ -78,17 +78,29 @@ module.exports = {
       database: Env.get('DB_DATABASE', 'adonis')
     }
   },
+  // SQL Server
+  mssql: {
+    client: "mssql",
+    connection: {
+      type: "mssql",
+      host: Env.get("DB_HOST", ""),
+      port:parseInt( Env.get("DB_PORT", "")),
+      user: Env.get("DB_USER", ""),
+      password: Env.get("DB_PASSWORD", ""),
+      database: Env.get("DB_DATABASE", "adonis"),     
+    }
+  },
   historian: {
     client: 'mssql',
     connection: {
       options: {
         enableArithAbort: true,
       },
-      host: Env.get('DB_HOST_PH', 'localhost'),
+      host: Env.get('DB_HOST', 'localhost'),
       port: 1433,
-      user: Env.get('DB_USER_PH', 'sysa'),
-      password: Env.get('DB_PASSWORD_PH', 'edsd5450'),
-      database: Env.get('DB_DATABASE_PH', 'TestPerformanceBatch')
+      user: Env.get('DB_USER', ''),
+      password: Env.get('DB_PASSWORD', ''),
+      database: Env.get('DB_DATABASE_PH', '')
     }
   }
 }

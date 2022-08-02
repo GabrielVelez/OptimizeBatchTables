@@ -90,6 +90,20 @@ module.exports = {
       password: Env.get('DB_PASSWORD_PH', 'edsd5450'),
       database: Env.get('DB_DATABASE_PH', 'TestPerformanceBatch')
     }
+  },
+  
+  sapServices: {
+    client: 'mssql',
+    connection: {
+      options: {
+        enableArithAbort: true,
+      },
+      host: Env.get('DB_HOST', 'localhost'),
+      port: 1433,
+      user: Env.get('DB_USER', 'sysa'),
+      password: Env.get('DB_PASSWORD', 'edsd5450'),
+      database: Env.get('DB_DATABASE', 'PxSapServices')
+    }
   }
 }
 

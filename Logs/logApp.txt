@@ -2351,3 +2351,21 @@ Require stack:
 2022-08-02 22:15:10 (Batchs cargados con exito)
 2022-08-02 22:15:57 (Batchs cargados con exito)
 2022-08-02 22:19:06 (Batchs cargados con exito)
+2022-08-04 15:01:49 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mainDB}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-08-04 15:02:47 (Error al cargar los batchs) Error: RuntimeException: E_MISSING_DB_CONNECTION: Missing database connection {mainDB}. Make sure you define it inside config/database.js file
+> More details: https://err.sh/adonisjs/errors/E_MISSING_DB_CONNECTION
+2022-08-05 17:41:01 (Batchs cargados con exito)
+2022-08-05 17:42:06 (Batchs cargados con exito)
+2022-08-08 10:21:07 (Batchs cargados con exito)
+2022-08-08 10:24:23 (Batchs cargados con exito)
+2022-08-08 10:26:32 (Batchs cargados con exito)
+2022-08-08 10:26:49 (Batchs cargados con exito)
+2022-08-08 10:28:52 (Batchs cargados con exito)
+2022-08-08 10:30:34 (Batchs cargados con exito)
+2022-08-08 11:05:54 (Batchs cargados con exito)
+2022-08-08 11:06:40 (Batchs cargados con exito)
+2022-08-08 11:10:02 (Batchs cargados con exito)
+2022-08-08 11:16:13 (Batchs cargados con exito)
+2022-08-08 11:18:20 (Batchs cargados con exito)
+2022-08-08 11:18:33 (Batchs cargados con exito)

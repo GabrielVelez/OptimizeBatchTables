@@ -24,7 +24,7 @@ async function ciclo() {
       }
       try {
         const lstBatch = await getBatchRunningData() //Obtenemos los batch a sincronizar
-        await controlFinishBatchsComplete(lstBatch) 
+        await controlFinishBatchsComplete(lstBatch)
       }
       catch (error) {
         console.log(moment().format('YYYY-MM-DD HH:mm:ss'), ` (Finalizando batchs) Error: ${error}`)
@@ -57,6 +57,7 @@ async function copyBatchsSync() {
     batchs = await Database
       .connection('historian')
       .raw(`SELECT OGUID, CreationDateTime FROM [vBatch] WHERE CreationDateTime >= '${desde.format('YYYY-MM-DD HH:mm:ss')}' ORDER BY CreationDateTime DESC`)
+
 
     if (batchs.length > 0) {
       let lastSyncDate = batchs[0].CreationDateTime;
@@ -158,36 +159,48 @@ async function getBatchRunningData() {
 }
 async function controlFinishBatchsComplete(lst) {
   try {
-    console.log("control finish start")
-    //Filtramos para conservar los finalizados.
+
+    //Filtramos para conservar los finali zados.
     let lstFinalizados = await lst.filter(it => (it.State == 11 || it.State == 12 || it.State == 13))
     await insertBatchData(lstFinalizados)
-
+    const rejectedOGUIDs = []
     //borrar batchs
     lstFinalizados.forEach(it => {
-      try {
+      try { 
 
         insertOpvData(it.OGUID)
         insertFaseData(it.OGUID)
-
-        console.log("4")
       }
       catch (error) {
         //insert de oguids que fallaron en tabla nueva
-        const rejectedOGUIDs = lstFinalizados.map(rejected => {
-          return {OGUID:rejected.OGUID}
-        })
-        //console.log('RECHAZADOS:',rejectedOGUIDs)
-         BatchRejected.createMany(rejectedOGUIDs)
-        .catch((error)=>{
-          return console.log('REJECTED_INSERT_ERROR:', error)
-        })
+        rejectedOGUIDs.push(lstFinalizados.map(rejected => {
+          return { OGUID: rejected.OGUID }
+        }))
+        
       }
+      finally{
+        deleteBartchRunning(it.OGUID)
+      }
+      
+        
     })
+
+    //console.log('RECHAZADOS:',rejectedOGUIDs)
+    BatchRejected.createMany(rejectedOGUIDs)
+      .catch((error) => {
+        return console.log('REJECTED_INSERT_ERROR:', error)
+      })
+
   } catch (error) {
     console.error(error)
   }
 }
+
+async function deleteBartchRunning(OGUID){
+  await Database
+  .raw(`DELETE FROM [dbo].[batchRunning] WHERE OGUID = '${OGUID}'`)
+}
+
 async function insertBatchData(lst) {
   try {
     //Borrar get
@@ -296,7 +309,7 @@ async function insertOpvData(OGUID) {
 
       let limite = i + 1000 < vOpvData.length ? 1000 : vOpvData.length - i
       let values = ''
-      
+
       for (i; i < registros + limite; i++) {
 
         if (values.length > 0) values += ', '

@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class TermTransOpt extends Model {
     static get table() {
-        return 'termTransOpt'
+        return 'pxOptBatches.termTransOpt'
     }
 
     static get createdAtColumn() {

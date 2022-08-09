@@ -98,7 +98,7 @@ async function copyBatchsSync() {
 
         try {
           await Database
-            .raw(`UPDATE sync SET lastSync = '${moment(lastSyncDate).utc().format('YYYY-MM-DD HH:mm:ss')}'`)
+            .raw(`UPDATE sync SET pxOptBatches.lastSync = '${moment(lastSyncDate).utc().format('YYYY-MM-DD HH:mm:ss')}'`)
 
           //.raw(`UPDATE DeclarateSE.sync SET lastSync = '${moment(batchs[0].CreationDateTime).utc().format('YYYY-MM-DD HH:mm:ss')}'`)
         }
@@ -198,7 +198,7 @@ async function controlFinishBatchsComplete(lst) {
 
 async function deleteBartchRunning(OGUID){
   await Database
-  .raw(`DELETE FROM [dbo].[batchRunning] WHERE OGUID = '${OGUID}'`)
+  .raw(`DELETE FROM pxOptBatches.[batchRunning] WHERE OGUID = '${OGUID}'`)
 }
 
 async function insertBatchData(lst) {
@@ -223,7 +223,7 @@ async function insertBatchData(lst) {
       }
       //Insert aqui
       const firstUserId = await Database
-        .raw(`INSERT INTO batchOpt(ROOTGUID,ROOTOBJID,ROOTOTID,OGUID,OBJID,OTID,Name, Quantity,FormulaCategoryName,FormulaName,MRecipeName,ProductCode,ActStart,ActEnd,State)
+        .raw(`INSERT INTO pxOptBatches.batchOpt(ROOTGUID,ROOTOBJID,ROOTOTID,OGUID,OBJID,OTID,Name, Quantity,FormulaCategoryName,FormulaName,MRecipeName,ProductCode,ActStart,ActEnd,State)
               VALUES${values}`)
       registros = i - 1
     }
@@ -271,7 +271,7 @@ async function insertFaseData(OGUID) {
       }
       //Inserte aqui el insert(?
       const firstUserId = await Database
-        .raw(`INSERT INTO termTransOpt([ROOTGUID]
+        .raw(`INSERT INTO pxOptBatches.termTransOpt([ROOTGUID]
           ,[ROOTOBJID]
           ,[ROOTOTID]
           ,[POBJID]
@@ -355,7 +355,7 @@ async function insertOpvData(OGUID) {
       }
 
       const firstUserId = await Database
-        .raw(`INSERT INTO onlineParameterValueOpt([ROOTGUID]
+        .raw(`INSERT INTO pxOptBatches.onlineParameterValueOpt([ROOTGUID]
             ,[P2OBJID]
             ,[P2OTID]
             ,[POBJID]
@@ -393,7 +393,7 @@ async function getDataFase(OGUID) {
       .connection('historian')
       .raw(`SELECT ROOTGUID, ROOTOBJID, ROOTOTID, POBJID, POTID, ParentActivationCounter, OBJID
       ,OTID, ActivationCounter, Name, State, Start, [End], DurationPlanned, DurationActual, UnitName
-      FROM [vTermTrans]
+      FROM pxOptBatches.[vTermTrans]
       WHERE ROOTGUID = '${OGUID}'`)
 
     return vFaseData
@@ -412,7 +412,7 @@ async function getDataOPV(OGUID) {
       .raw(`SELECT sps.ROOTGUID, sps.P2OBJID, sps.P2OTID, sps.POBJID, sps.POTID, sps.ActivationCounter, sps.OBJID,
       sps.Name, sps.sp_float, sps.av_float, sps.sp_int, sps.av_int, sps.sp_string, sps.av_string, sps.sp_matname,
       sps.sp_matcode, sps.sp_EnumValue, sps.av_EnumValue
-    FROM [vOnlineParameterValue] as sps
+    FROM pxOptBatches.[vOnlineParameterValue] as sps
     WHERE ROOTGUID = '${OGUID}'`)
 
     return vOPVData

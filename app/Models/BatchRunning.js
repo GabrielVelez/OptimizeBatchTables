@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class BatchRunning extends Model {
     static get table () {
-        return 'batchRunning'
+        return 'pxOptBatches.batchRunning'
     }
 
     static get createdAtColumn () {

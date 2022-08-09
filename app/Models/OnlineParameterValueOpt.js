@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class OnlineParameterValueOpt extends Model {
     static get table() {
-        return 'onlineParameterValueOpt'
+        return 'pxOptBatches.onlineParameterValueOpt'
     }
 
     static get createdAtColumn() {

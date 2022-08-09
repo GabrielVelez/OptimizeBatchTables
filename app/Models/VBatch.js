@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class VBatch extends Model {
     static get table () {
-        return 'vBatch'
+        return 'pxOptBatches.vBatch'
     }
 
     static get createdAtColumn () {
